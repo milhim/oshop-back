@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ShoppingCartController;
@@ -42,10 +44,15 @@ Route::group([
 //shopping cart
     Route::post('/shopping-cart',[CartController::class,'create']);
     Route::put('/shopping-cart',[CartController::class,'update']);
-    Route::get('/shopping-cart/{id}',[CartController::class,'show']);
+    Route::get('/shopping-cart-item/{id}',[CartController::class,'show']);
     Route::get('/shopping-cart',[CartController::class,'index']);
     Route::post('/shopping-cart/remove',[CartController::class,'remove']);
-
     Route::get('/shopping-cart-products/{id}',[CartController::class,'getProducts']);
+    Route::delete('/shopping-cart/{id}',[CartController::class,'destroy']);
+//cart product
+    Route::get('/shopping-cart/{id}',[CartProductController::class,'show']);
+
+    //order
+    Route::post('/order',[OrderController::class,'create']);
 
 });

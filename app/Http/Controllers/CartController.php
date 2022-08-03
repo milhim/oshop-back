@@ -43,7 +43,7 @@ class CartController extends Controller
     }
     public function show($id)
     {
-        $cart = CartProduct::where('cart_id', $id)->get();
+        $cart = Cart::find(1);
         return response()->json($cart);
     }
     public function index()
@@ -78,6 +78,14 @@ class CartController extends Controller
     $cart=Cart::find($id);
     $cart->products;
     return response()->json($cart);
+
+    }
+    public function destroy($id){
+        $cart=Cart::find($id);
+        $cart->products()->detach();
+        $cart->quantity=0;
+        $cart->save();
+        return response()->json(['message' => 'cart has been clened']);
 
     }
 }
