@@ -28,11 +28,21 @@ Route::group([
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    Route::get('/profile', [AuthController::class, 'userProfile']);
     Route::post('/send-password-reset-link', [ResetPasswordController::class, 'sendResetEmail']);
     Route::post('/password-reset', [ChangePasswordController::class, 'changePassword']);
-    //get user name
-    Route::get('/username', [AuthController::class, 'me']);
+
+    
+
+    // Route::post('/login', [AuthController::class, 'login']);
+    // Route::post('/register', [AuthController::class, 'register']);
+    // Route::post('/logout', [AuthController::class, 'logout']);
+    // Route::post('/refresh', [AuthController::class, 'refresh']);
+    // Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    // Route::post('/send-password-reset-link', [ResetPasswordController::class, 'sendResetEmail']);
+    // Route::post('/password-reset', [ChangePasswordController::class, 'changePassword']);
+    // //get user name
+    // Route::get('/username', [AuthController::class, 'me']);
     //categories
     Route::get('/categories',[CategoryController::class,'index']);
     //product 
